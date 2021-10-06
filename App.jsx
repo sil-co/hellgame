@@ -1,18 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import Hello from './src/components/Hello';
+import AppBar from './src/components/AppBar';
+import GamePage from './src/components/GamePage';
+import RankButton from './src/components/RankButton';
+import EngAppBar from './src/components/EngAppBar';
+import EngGamePage from './src/components/EngGamePage';
+import EngRankButton from './src/components/EngRankButton';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Hello bang style={{ backgroundColor: 'red' }}>World</Hello>
-      <Hello bang bar={{ fontSize: 10 }}>World</Hello>
-      <Hello bang style={{ color: 'black' }}>World</Hello>
-      <Text>Open up App.js to start working on your app!</Text>
-      {/* eslint-disable-next-line */}
-      <StatusBar style="auto" />
+      <EngAppBar />
+
+      <EngGamePage />
+
+      <EngRankButton />
+
     </View>
   );
 }
@@ -20,8 +24,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+
 });
