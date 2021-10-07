@@ -1,13 +1,24 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { shape, string } from 'prop-types';
 
-export default function EngRankButton() {
+export default function RankButton(props) {
+  const { children, style } = props;
   return (
-    <View style={styles.rankButton}>
-      <Text style={styles.rankText}>Ranking</Text>
+    <View style={[styles.rankButton, style]}>
+      <Text style={styles.rankText}>{children}</Text>
     </View>
   );
 }
+
+RankButton.propTypes = {
+  children: string.isRequired,
+  style: shape(),
+};
+
+RankButton.defaultProps = {
+  style: null,
+};
 
 const styles = StyleSheet.create({
   rankButton: {

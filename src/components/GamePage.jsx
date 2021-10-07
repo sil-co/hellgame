@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     lineHeight: 32,
   },
   hellButton: {
-    // backgroundColor: 'red',
     height: 300,
     width: '100%',
     justifyContent: 'center',
@@ -57,11 +56,6 @@ const styles = StyleSheet.create({
     borderRadius: 125,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    elevation: 14,
   },
   hellButtonText: {
     fontSize: 100,
