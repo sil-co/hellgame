@@ -80,7 +80,43 @@ export default function RankScreen() {
 
           <View style={styles.rankItem}>
             <View style={styles.rankItemRank}>
-              <Text style={styles.ranItemRankTitle}>1</Text>
+              <Text style={styles.ranItemRankTitle}>7</Text>
+            </View>
+            <Text style={styles.rankItemName}>Colorfffffffinvaliderror</Text>
+            <Text style={styles.rankItemTime}>40年44日4時間44分</Text>
+            <Text style={styles.randItemDate}>4/4/4</Text>
+          </View>
+
+          <View style={styles.rankItem}>
+            <View style={styles.rankItemRank}>
+              <Text style={styles.ranItemRankTitle}>8</Text>
+            </View>
+            <Text style={styles.rankItemName}>Colorfffffffinvaliderror</Text>
+            <Text style={styles.rankItemTime}>40年44日4時間44分</Text>
+            <Text style={styles.randItemDate}>4/4/4</Text>
+          </View>
+
+          <View style={styles.rankItem}>
+            <View style={styles.rankItemRank}>
+              <Text style={styles.ranItemRankTitle}>9</Text>
+            </View>
+            <Text style={styles.rankItemName}>Colorfffffffinvaliderror</Text>
+            <Text style={styles.rankItemTime}>40年44日4時間44分</Text>
+            <Text style={styles.randItemDate}>4/4/4</Text>
+          </View>
+
+          <View style={styles.rankItem}>
+            <View style={styles.rankItemRank}>
+              <Text style={styles.ranItemRankTitle}>10</Text>
+            </View>
+            <Text style={styles.rankItemName}>Colorfffffffinvaliderror</Text>
+            <Text style={styles.rankItemTime}>40年44日4時間44分</Text>
+            <Text style={styles.randItemDate}>4/4/4</Text>
+          </View>
+
+          <View style={styles.rankItem}>
+            <View style={styles.rankItemRank}>
+              <Text style={styles.ranItemRankTitle}>11</Text>
             </View>
             <Text style={styles.rankItemName}>Colorfffffffinvaliderror</Text>
             <Text style={styles.rankItemTime}>40年44日4時間44分</Text>
@@ -131,15 +167,15 @@ const styles = StyleSheet.create({
   },
   rankBarRank: {
     width: 40,
-    marginRight: 5,
+    marginRight: 10,
   },
   rankBarName: {
     width: 80,
-    marginRight: 5,
+    marginRight: 10,
   },
   rankBarTime: {
     width: 100,
-    marginRight: 5,
+    marginRight: 10,
   },
   randBarDate: {
     width: 90,
@@ -158,18 +194,18 @@ const styles = StyleSheet.create({
   },
   rankItemRank: {
     width: 40,
-    marginRight: 5,
+    marginRight: 10,
     alignItems: 'center',
   },
   ranItemRankTitle: {
   },
   rankItemName: {
     width: 80,
-    marginRight: 5,
+    marginRight: 10,
   },
   rankItemTime: {
     width: 100,
-    marginRight: 5,
+    marginRight: 10,
   },
   randItemDate: {
     width: 90,
