@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { string } from 'prop-types';
 
 export default function Button(props) {
   const { label } = props;
   return (
-    <View style={styles.buttonContainer}>
+    <TouchableOpacity style={styles.buttonContainer}>
       <Text style={styles.buttonLabel}>{label}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

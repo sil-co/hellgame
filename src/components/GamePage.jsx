@@ -1,31 +1,41 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View, Text, StyleSheet,
+} from 'react-native';
+import { number } from 'prop-types';
 
-export default function GamePage() {
+import GameButton from './GameButton';
+
+export default function GamePage(props) {
+  const { task } = props;
+  const [count, setCount] = useState(0);
+  const onPress = () => setCount((prevCount) => prevCount + 1);
+  const rate = Math.floor((count / task) * 1000) / 10;
+
   return (
     <View>
 
       <View style={styles.hellText}>
-        <Text style={styles.hellTask}>HELLボタンを1000回押してください</Text>
+        <Text style={styles.hellTask}>{`HELLボタンを${task}回押してください`}</Text>
       </View>
 
-      <View style={styles.hellButton}>
-        <View style={styles.hellButtonCircle}>
-          <Text style={styles.hellButtonText}>HELL</Text>
-        </View>
+      <GameButton name="HELL" onPress={onPress} />
+
+      <View style={styles.hellText}>
+        <Text style={styles.hellTask}>{`達成率: ${rate}`}</Text>
       </View>
 
       <View style={styles.hellText}>
-        <Text style={styles.hellTask}>達成率: 10%</Text>
-      </View>
-
-      <View style={styles.hellText}>
-        <Text style={styles.hellTask}>カウント: 100</Text>
+        <Text style={styles.hellTask}>{`カウント: ${count}`}</Text>
       </View>
 
     </View>
   );
 }
+
+GamePage.propTypes = {
+  task: number.isRequired,
+};
 
 const styles = StyleSheet.create({
   hellText: {
@@ -40,25 +50,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 32,
   },
-  hellButton: {
-    height: 300,
-    width: '100%',
-    justifyContent: 'center',
-    paddingHorizontal: 30,
-    borderBottomWidth: 1,
-    borderColor: 'rgba(0,0,0,0.15)',
-    alignItems: 'center',
-  },
-  hellButtonCircle: {
-    backgroundColor: '#E37B7B',
-    height: 250,
-    width: 250,
-    borderRadius: 125,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  hellButtonText: {
-    fontSize: 100,
-    color: 'white',
-  },
+
 });

@@ -1,23 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { shape, string } from 'prop-types';
+import {
+  Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
+import { func, shape, string } from 'prop-types';
 
 export default function RankButton(props) {
-  const { children, style } = props;
+  const { children, style, onPress } = props;
   return (
-    <View style={[styles.rankButton, style]}>
+    <TouchableOpacity style={[styles.rankButton, style]} onPress={onPress}>
       <Text style={styles.rankText}>{children}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 RankButton.propTypes = {
   children: string.isRequired,
   style: shape(),
+  onPress: func,
 };
 
 RankButton.defaultProps = {
   style: null,
+  onPress: null,
 };
 
 const styles = StyleSheet.create({

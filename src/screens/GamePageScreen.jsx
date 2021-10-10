@@ -10,7 +10,7 @@ export default function GamePageScreen() {
     <View style={styles.container}>
       <AppBar />
 
-      <GamePage />
+      <GamePage name="HELL" task={1000} />
 
       <RankButton>ランキング</RankButton>
 
