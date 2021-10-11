@@ -3,14 +3,12 @@ import {
   View, StyleSheet, Text, ScrollView,
 } from 'react-native';
 
-import AppBar from '../components/AppBar';
 import RankButton from '../components/RankButton';
 
-export default function RankScreen() {
+export default function RankScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-
-      <AppBar />
 
       <View style={styles.rankMainPage}>
 
@@ -127,24 +125,16 @@ export default function RankScreen() {
 
       </View>
 
-      <RankButton>ランキング</RankButton>
-
-      <RankButton style={{
-        right: 15,
-        top: 35,
-        botton: 'none',
-        opacity: 0.5,
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0,
-        shadowRadius: 0,
-        elevation: 0,
-      }}
-      >
-        En/Ja
+      <RankButton onPress={() => { navigation.navigate('MyPage'); }}>
+        マイページ
       </RankButton>
 
-      <RankButton style={{ bottom: 90 }}>マイページ</RankButton>
+      <RankButton
+        style={{ bottom: 90 }}
+        onPress={() => { navigation.navigate('GamePage'); }}
+      >
+        暇を潰す
+      </RankButton>
 
     </View>
   );
@@ -153,6 +143,7 @@ export default function RankScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   rankMainPage: {
     marginHorizontal: 15,

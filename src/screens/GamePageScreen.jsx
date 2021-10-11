@@ -1,35 +1,35 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import AppBar from '../components/AppBar';
 import GamePage from '../components/GamePage';
 import RankButton from '../components/RankButton';
 
-export default function GamePageScreen() {
+export default function GamePageScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <AppBar />
 
       <GamePage name="HELL" task={1000} />
 
-      <RankButton>ランキング</RankButton>
-
-      <RankButton style={{
-        right: 15,
-        top: 35,
-        botton: 'none',
-        opacity: 0.5,
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0,
-        shadowRadius: 0,
-        elevation: 0,
-      }}
+      <RankButton
+        onPress={() => { navigation.navigate('Ranking'); }}
       >
-        En/Ja
+        ランキング
       </RankButton>
 
-      <RankButton style={{ bottom: 90 }}>マイページ</RankButton>
+      <RankButton style={{
+        bottom: 140,
+      }}
+      >
+        English
+      </RankButton>
+
+      <RankButton
+        style={{ bottom: 90 }}
+        onPress={() => { navigation.navigate('MyPage'); }}
+      >
+        マイページ
+      </RankButton>
     </View>
   );
 }
@@ -37,5 +37,6 @@ export default function GamePageScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
 });

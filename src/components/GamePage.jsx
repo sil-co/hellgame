@@ -39,6 +39,7 @@ GamePage.propTypes = {
 
 const styles = StyleSheet.create({
   hellText: {
+    // backgroundColor: 'white',
     height: 70,
     alignItems: 'center',
     justifyContent: 'center',

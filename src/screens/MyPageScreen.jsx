@@ -3,13 +3,12 @@ import {
   Text, View, StyleSheet, TextInput, ScrollView,
 } from 'react-native';
 
-import AppBar from '../components/AppBar';
 import RankButton from '../components/RankButton';
 
-export default function MyPageScreen() {
+export default function MyPageScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <AppBar />
 
       <ScrollView style={styles.myPageContainer}>
 
@@ -125,8 +124,13 @@ export default function MyPageScreen() {
 
       </ScrollView>
 
-      <RankButton>ランキング</RankButton>
-      <RankButton style={{ bottom: 90 }}>マイページ</RankButton>
+      <RankButton
+        style={{ bottom: 90 }}
+        onPress={() => { navigation.navigate('GamePage'); }}
+      >
+        暇を潰す
+      </RankButton>
+      <RankButton onPress={() => { navigation.navigate('Ranking'); }}>ランキング</RankButton>
     </View>
   );
 }
@@ -134,6 +138,7 @@ export default function MyPageScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   myPageContainer: {
     marginHorizontal: 15,
