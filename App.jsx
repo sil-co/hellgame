@@ -2,6 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
+import firebase from 'firebase';
+// import { getAnalytics } from 'firebase/analytics';
 
 // import CountUpExample from './src/components/CountUpExample';
 
@@ -12,8 +14,16 @@ import LogInScreen from './src/screens/LogInScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import EngGamePageScreen from './src/screens/EngGamePageScreen';
 
+import { firebaseConfig } from './env';
+
 // const Stack = createNativeStackNavigator();
 const Stack = createStackNavigator();
+
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
+// const app = firebase.initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 export default function App() {
   return (
