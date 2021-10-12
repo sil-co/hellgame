@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Text, View, StyleSheet, TextInput, ScrollView,
 } from 'react-native';
 
 import RankButton from '../components/RankButton';
+import LogOutButton from '../components/LogOutButton';
 
 export default function MyPageScreen(props) {
   const { navigation } = props;
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <LogOutButton />,
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
 

@@ -6,6 +6,7 @@ import RankButton from '../components/RankButton';
 
 export default function GamePageScreen(props) {
   const { navigation } = props;
+
   return (
     <View style={styles.container}>
 
