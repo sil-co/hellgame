@@ -18,13 +18,6 @@ export default function GamePageScreen(props) {
         ランキング
       </RankButton>
 
-      <RankButton style={{
-        bottom: 140,
-      }}
-      >
-        English
-      </RankButton>
-
       <RankButton
         style={{ bottom: 90 }}
         onPress={() => { navigation.navigate('MyPage'); }}

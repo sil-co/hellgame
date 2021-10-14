@@ -16,14 +16,17 @@ import EngGamePageScreen from './src/screens/EngGamePageScreen';
 
 import { firebaseConfig } from './env';
 
-// const Stack = createNativeStackNavigator();
-const Stack = createStackNavigator();
+require('firebase/firestore');
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+// console.log(firebase.apps.length);
 // const app = firebase.initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+
+// const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
