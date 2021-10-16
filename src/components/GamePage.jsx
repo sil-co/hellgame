@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet,
+  View, Text, StyleSheet, Alert,
 } from 'react-native';
 import { number } from 'prop-types';
 
@@ -12,33 +12,99 @@ import RankButton from './RankButton';
 export default function GamePage(props) {
   const { task } = props;
   const [count, setCount] = useState(0);
+
   const handlePress = () => {
+    setCount((prevCount) => prevCount + 1);
+    // const { currentUser } = firebase.auth();
+    // const db = firebase.firestore();
+    // const ref = db.collection(`users/${currentUser.uid}/1000`).doc('countAndDate');
+    // ref.set({
+    //   countsUp: count,
+    //   updatedAt: new Date(),
+    // })
+    //   .then(() => {
+    //     console.log('Created!', '------------------------------------');
+    //   })
+    //   .catch((error) => {
+    //     console.log('Error!', error);
+    //   });
+  };
+
+  // useEffect(() => {
+  //   const db = firebase.firestore();
+  //   const { currentUser } = firebase.auth();
+  //   let unsubscribe = () => {};
+  //   if (currentUser) {
+  //     const ref = db.collection(`users/${currentUser.uid}/1000`).orderBy('updatedAt', 'desc');
+  //     unsubscribe = ref.onSnapshot((snapshot) => {
+  //       const userCount = [];
+  //       snapshot.forEach((doc) => {
+  //         const initialValue = doc.data();
+  //         userCount.push({
+  //           countsUp: initialValue.countsUp,
+  //         });
+  //         console.log(initialValue.countsUp);
+  //       });
+  //       console.log(userCount[0].countsUp);
+  //       setCount(userCount[0].countsUp);
+  //     }, (error) => {
+  //       console.log(error);
+  //       Alert.alert('データの読み込みに失敗しました');
+  //     });
+  //   }
+  //   return unsubscribe;
+  // }, []);
+
+  // const [count, setCount] = useState(initialValue);
+
+  const reflectPress = () => {
+    // setCount((prevCount) => prevCount + 1);
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
-
-    /*  coutsUpの値を更新しようとした
-    const getdb = db.collection(`users/${currentUser.uid}/${task}`).get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          const data = doc.data();
-          console.log(data.countsUp);
+    const refID = db.collection(`users/${currentUser.uid}/1000`).doc('countAndDate');
+    // refID.set({
+    //   countsUp: count,
+    //   updatedAt: new Date(),
+    // })
+    //   .then(() => {
+    //     console.log('Created!', '------------------------------------');
+    //   })
+    //   .catch((error) => {
+    //     console.log('Error!', error);
+    //   });
+    if (currentUser) {
+      const ref = db.collection(`users/${currentUser.uid}/1000`).orderBy('updatedAt', 'desc');
+      ref.onSnapshot((snapshot) => {
+        const userCount = [];
+        snapshot.forEach((doc) => {
+          const initialValue = doc.data();
+          userCount.push({
+            countsUp: initialValue.countsUp,
+          });
+          // console.log(initialValue.countsUp);
         });
-      }); */
-
-    const refe = db.collection(`users/${currentUser.uid}/${task}`);
-    refe.add({
-      countsUp: count,
-      updatedAt: new Date(),
-    })
-      .then((docRef) => {
-        console.log('Count Up!', docRef.id);
-      })
-      .catch((error) => {
-        console.log('Error!', error);
+        console.log(userCount[0].countsUp);
+        if (count < userCount[0].countsUp) {
+          setCount(userCount[0].countsUp);
+        } else if (count > userCount[0].countsUp) {
+          refID.set({
+            countsUp: count,
+            updatedAt: new Date(),
+          })
+            .then(() => {
+              console.log('Created!', '------------------------------------');
+            })
+            .catch((error) => {
+              console.log('Error!', error);
+            });
+        }
+      }, (error) => {
+        console.log(error);
+        Alert.alert('データの読み込みに失敗しました');
       });
-
-    setCount((prevCount) => prevCount + 1);
+    }
   };
+
   const rate = Math.floor((count / task) * 1000) / 10;
 
   return (
@@ -48,10 +114,14 @@ export default function GamePage(props) {
         <Text style={styles.hellTask}>{`HELLボタンを${task}回押してください`}</Text>
       </View>
 
-      <GameButton name="HELL" onPress={handlePress} />
+      <GameButton
+        name="HELL"
+        // eslint-disable-next-line
+        onPress={handlePress}
+      />
 
       <View style={styles.hellText}>
-        <Text style={styles.hellTask}>{`達成率: ${rate}`}</Text>
+        <Text style={styles.hellTask}>{`達成率: ${rate}%`}</Text>
       </View>
 
       <View style={styles.hellText}>
@@ -60,8 +130,9 @@ export default function GamePage(props) {
 
       <RankButton
         style={{ bottom: 140 }}
+        onPress={reflectPress}
       >
-        English
+        データ反映
       </RankButton>
 
     </View>
