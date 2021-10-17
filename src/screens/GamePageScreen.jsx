@@ -10,7 +10,7 @@ export default function GamePageScreen(props) {
   return (
     <View style={styles.container}>
 
-      <GamePage name="HELL" task={1000} />
+      <GamePage name="HELL" />
 
       <RankButton
         onPress={() => { navigation.navigate('Ranking'); }}

@@ -28,12 +28,13 @@ export default function MyPageScreen(props) {
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userNumber = [];
         snapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
+          // console.log(doc.id, doc.data());
           const data = doc.data();
           userNumber.push({
             id: doc.id,
             countsUp: data.countsUp,
-            updatedAt: data.updatedAt,
+            updatedAt: data.updatedAt.toDate(),
+            createdAt: data.createdAt.toDate(),
           });
         });
         setMyPageCount(userNumber);

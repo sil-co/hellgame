@@ -1,13 +1,16 @@
 import {
-  shape, instanceOf, string, number, arrayOf,
+  shape, string, number, arrayOf, // instanceOf,
 } from 'prop-types';
 import React from 'react';
 import {
-  View, Text, StyleSheet, TextInput, ScrollView, FlatList,
+  View, Text, StyleSheet, TextInput, ScrollView, // FlatList,
 } from 'react-native';
+
+import { dateToString } from '../utils';
 
 export default function MyPage(props) {
   const { myPageCount } = props;
+  console.log(myPageCount);
 
   // const renderItem = ({ item }) => {
   //   <View
@@ -60,7 +63,7 @@ export default function MyPage(props) {
           >
             <Text style={styles.myPageGameTitle}>1000000回</Text>
             <View style={styles.myPageGame}>
-              <Text style={styles.myPageGameRate} numberOfLines={1}>{`最終更新日：${String(count.updatedAt)}`}</Text>
+              <Text style={styles.myPageGameRate} numberOfLines={1}>{`最終更新日：${dateToString(count.updatedAt)}`}</Text>
               <Text style={styles.myPageGameCount}>{`カウント：${count.countsUp}`}</Text>
             </View>
           </View>
